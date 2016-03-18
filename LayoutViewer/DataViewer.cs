@@ -20,6 +20,7 @@ namespace LayoutViewer
         {
             this.data = data;
             InitializeComponent();
+            Init();
             FormatDataGrid();
         }
 
@@ -43,6 +44,12 @@ namespace LayoutViewer
 
                 dataGridView1.Columns.Add(col);
             }
+        }
+
+        private void Init()
+        {
+            columnTemplate = new DataGridViewTextBoxCell();
+            columnTemplate.ValueType = typeof(byte);
         }
     }
 }
