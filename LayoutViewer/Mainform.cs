@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LayoutViewer.DataTypes.Primitive;
+using Be.Windows.Forms;
 
 namespace LayoutViewer
 {
@@ -25,11 +26,21 @@ namespace LayoutViewer
             PrimitiveType<ulong> val2 = new PrimitiveType<ulong>(0xFEDCBA9876543210);
             PrimitiveType<byte> val3 = new PrimitiveType<byte>(0xAB);
 
-            listBox1.Items.Add(new DataViewer(val1));
-            listBox1.Items.Add(new DataViewer(val2));
-            listBox1.Items.Add(new DataViewer(val3));
+            //listBox1.Items.Add(new DataViewer(val1));
+            //listBox1.Items.Add(new DataViewer(val2));
+            //listBox1.Items.Add(new DataViewer(val3));
 
-            this.Controls.Add(new DataViewer(val2));
+            flowLayoutPanel1.Controls.Add(new DataViewer(val1));
+            flowLayoutPanel1.Controls.Add(new DataViewer(val2));
+            flowLayoutPanel1.Controls.Add(new DataViewer(val3));
+
+            HexBox box = new HexBox();
+            // Provider must be fed
+            //box.ByteProvider = 
+
+            
+
+            //this.Controls.Add(new DataViewer(val2));
         }
     }
 }
