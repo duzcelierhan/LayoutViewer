@@ -32,15 +32,15 @@ namespace LayoutViewer
 
         private void FormatDataGrid()
         {
-            for(int i=0;i<16;i++)
+            for (int i = 0; i < 16; i++)
             {
                 DataGridViewColumn col = new DataGridViewColumn();
-                col.CellTemplate = new DataGridViewTextBoxCell();
+                col.CellTemplate = columnTemplate;
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                 col.DividerWidth = 1;
                 col.Resizable = DataGridViewTriState.False;
                 col.ValueType = typeof(byte);
-                col.Width = 20;
+                col.Width = 25;
 
                 dataGridView1.Columns.Add(col);
             }
