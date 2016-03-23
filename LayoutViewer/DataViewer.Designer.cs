@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.hexBox1 = new Be.Windows.Forms.HexBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,10 +71,24 @@
             this.dataGridView1.Size = new System.Drawing.Size(470, 155);
             this.dataGridView1.TabIndex = 0;
             // 
+            // hexBox1
+            // 
+            this.hexBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBox1.Location = new System.Drawing.Point(3, 3);
+            this.hexBox1.Name = "hexBox1";
+            this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
+            this.hexBox1.Size = new System.Drawing.Size(464, 149);
+            this.hexBox1.TabIndex = 1;
+            this.hexBox1.UseFixedBytesPerLine = true;
+            // 
             // DataViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.hexBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "DataViewer";
             this.Size = new System.Drawing.Size(470, 155);
@@ -85,5 +100,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        public Be.Windows.Forms.HexBox hexBox1;
     }
 }
