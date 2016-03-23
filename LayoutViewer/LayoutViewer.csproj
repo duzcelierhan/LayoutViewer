@@ -94,7 +94,7 @@
     <Folder Include="DataTypes\Primitive\_tmp\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Be.HexEditor-1.6.0\sources\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj">
+    <ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj">
       <Project>{26c5f25f-b450-4caf-ad8b-b8d11ae73457}</Project>
       <Name>Be.Windows.Forms.HexBox</Name>
     </ProjectReference>
