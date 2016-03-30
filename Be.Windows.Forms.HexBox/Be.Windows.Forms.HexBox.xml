@@ -112,6 +112,11 @@
             Gets or sets the custom text of the "Select All" ContextMenuStrip item.
             </summary>
         </member>
+        <member name="P:Be.Windows.Forms.BuiltInContextMenu.ReadOnlyMenuItemText">
+            <summary>
+            Gets or sets the custom text of the "Read Only" ContextMenuStrip item.
+            </summary>
+        </member>
         <member name="P:Be.Windows.Forms.BuiltInContextMenu.CutMenuItemTextInternal">
             <summary>
             Gets the text of the "Cut" ContextMenuStrip item.
@@ -132,6 +137,11 @@
             Gets the text of the "Select All" ContextMenuStrip item.
             </summary>
         </member>
+        <member name="P:Be.Windows.Forms.BuiltInContextMenu.ReadOnlyMenuItemTextInternal">
+            <summary>
+            Gets the text of the "Read Only" ContextMenuStrip item.
+            </summary>
+        </member>
         <member name="P:Be.Windows.Forms.BuiltInContextMenu.CutMenuItemImage">
             <summary>
             Gets or sets the image of the "Cut" ContextMenuStrip item.
@@ -150,6 +160,11 @@
         <member name="P:Be.Windows.Forms.BuiltInContextMenu.SelectAllMenuItemImage">
             <summary>
             Gets or sets the image of the "Select All" ContextMenuStrip item.
+            </summary>
+        </member>
+        <member name="P:Be.Windows.Forms.BuiltInContextMenu.ReadOnlyMenuItemImage">
+            <summary>
+            Gets or sets the image of the "Read Only" ContextMenuStrip item.
             </summary>
         </member>
         <member name="T:Be.Windows.Forms.ByteCollection">

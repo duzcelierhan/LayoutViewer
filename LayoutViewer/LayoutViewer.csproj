@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBox\IDataBox.cs" />
     <Compile Include="DataTypes\Complex\ComplexType.cs" />
     <Compile Include="DataTypes\IDataType.cs" />
     <Compile Include="DataTypes\Primitive\PrimitiveType.cs" />

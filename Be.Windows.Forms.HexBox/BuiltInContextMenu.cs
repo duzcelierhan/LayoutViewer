@@ -34,7 +34,9 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Contains the "Select All"-ToolStripMenuItem object.
         /// </summary>
-        ToolStripMenuItem _selectAllToolStripMenuItem;
+        private ToolStripMenuItem _selectAllToolStripMenuItem;
+
+        private ToolStripMenuItem _readOnlyToolStripMenuıtem;
         /// <summary>
         /// Initializes a new instance of BuildInContextMenu class.
         /// </summary>
@@ -64,6 +66,11 @@ namespace Be.Windows.Forms
             if (_contextMenuStrip == null)
             {
                 ContextMenuStrip cms = new ContextMenuStrip();
+                _readOnlyToolStripMenuıtem = new ToolStripMenuItem(ReadOnlyMenuItemTextInternal, ReadOnlyMenuItemImage, ReadOnlyMenuItem_Click);
+                cms.Items.Add(_readOnlyToolStripMenuıtem);
+
+                cms.Items.Add(new ToolStripSeparator());
+
                 _cutToolStripMenuItem = new ToolStripMenuItem(CutMenuItemTextInternal, CutMenuItemImage, CutMenuItem_Click);
                 cms.Items.Add(_cutToolStripMenuItem);
                 _copyToolStripMenuItem = new ToolStripMenuItem(CopyMenuItemTextInternal, CopyMenuItemImage, CopyMenuItem_Click);
@@ -96,6 +103,7 @@ namespace Be.Windows.Forms
             _copyToolStripMenuItem.Enabled = _hexBox.CanCopy();
             _pasteToolStripMenuItem.Enabled = _hexBox.CanPaste();
             _selectAllToolStripMenuItem.Enabled = _hexBox.CanSelectAll();
+            _readOnlyToolStripMenuıtem.Checked = _hexBox.ReadOnly;
         }
         /// <summary>
         /// The handler for the "Cut"-Click event
@@ -121,6 +129,12 @@ namespace Be.Windows.Forms
         /// <param name="sender">the sender object</param>
         /// <param name="e">the event data</param>
         private void SelectAllMenuItem_Click(object sender, EventArgs e) { _hexBox.SelectAll(); }
+
+        private void ReadOnlyMenuItem_Click(object sender, EventArgs e)
+        {
+            _readOnlyToolStripMenuıtem.Checked = _hexBox.ReadOnly = _hexBox.ReadOnly ^ true;
+        }
+
         /// <summary>
         /// Gets or sets the custom text of the "Copy" ContextMenuStrip item.
         /// </summary>
@@ -146,6 +160,12 @@ namespace Be.Windows.Forms
         public string SelectAllMenuItemText { get; set; }
 
         /// <summary>
+        /// Gets or sets the custom text of the "Read Only" ContextMenuStrip item.
+        /// </summary>
+        [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
+        public string ReadOnlyMenuItemText { get; set; }
+
+        /// <summary>
         /// Gets the text of the "Cut" ContextMenuStrip item.
         /// </summary>
         internal string CutMenuItemTextInternal => !string.IsNullOrEmpty(CutMenuItemText) ? CutMenuItemText : "Cut";
@@ -164,6 +184,11 @@ namespace Be.Windows.Forms
         /// Gets the text of the "Select All" ContextMenuStrip item.
         /// </summary>
         internal string SelectAllMenuItemTextInternal => !string.IsNullOrEmpty(SelectAllMenuItemText) ? SelectAllMenuItemText : "SelectAll";
+
+        /// <summary>
+        /// Gets the text of the "Read Only" ContextMenuStrip item.
+        /// </summary>
+        internal string ReadOnlyMenuItemTextInternal => !string.IsNullOrEmpty(ReadOnlyMenuItemText) ? ReadOnlyMenuItemText: "Read Only";
 
         /// <summary>
         /// Gets or sets the image of the "Cut" ContextMenuStrip item.
@@ -188,5 +213,11 @@ namespace Be.Windows.Forms
         /// </summary>
         [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
         public Image SelectAllMenuItemImage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the image of the "Read Only" ContextMenuStrip item.
+        /// </summary>
+        [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
+        public Image ReadOnlyMenuItemImage { get; set; }
     }
 }
