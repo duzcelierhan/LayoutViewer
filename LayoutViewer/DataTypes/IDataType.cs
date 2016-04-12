@@ -15,5 +15,6 @@ namespace LayoutViewer.DataTypes
         void Set(byte[] buff);
         byte[] Get();
         byte[] Buffer { get; set; }
+        string Name { get; set; }
     }
 }
