@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace LayoutViewer.DataTypes
 {
@@ -16,5 +17,6 @@ namespace LayoutViewer.DataTypes
         byte[] Get();
         byte[] Buffer { get; set; }
         string Name { get; set; }
+        XmlElement SerializeType(XmlDocument xmlDoc);
     }
 }

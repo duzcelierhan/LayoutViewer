@@ -47,9 +47,11 @@
   <ItemGroup>
     <Compile Include="DataBox\IDataBox.cs" />
     <Compile Include="DataTypes\Complex\ComplexType.cs" />
+    <Compile Include="DataTypes\Enums.cs" />
     <Compile Include="DataTypes\IDataType.cs" />
     <Compile Include="DataTypes\Primitive\PrimitiveType.cs" />
     <Compile Include="DataTypes\Primitive\PrimitiveTypeBase.cs" />
+    <Compile Include="DataTypes\TypeFactory.cs" />
     <Compile Include="DataViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>

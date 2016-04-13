@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace LayoutViewer.DataTypes.Primitive
 {
@@ -38,13 +39,9 @@ namespace LayoutViewer.DataTypes.Primitive
 
         #region IDataType Implementation
 
-        public override int Length
-        {
-            get
-            {
-                return Marshal.SizeOf(default(T));
-            }
-        }
+        public override int Length => Marshal.SizeOf(default(T));
+
+        public string Name { get; set; }
 
         public override byte[] Get()
         {
@@ -101,6 +98,24 @@ namespace LayoutViewer.DataTypes.Primitive
             }
 
             this.Value = (T)value;
+        }
+
+        public XmlElement SerializeType(XmlDocument xmlDocument)
+        {
+            XmlElement node = xmlDocument.CreateElement("Primitive");
+            XmlAttribute name = xmlDocument.CreateAttribute("Name");
+            XmlAttribute ltype = xmlDocument.CreateAttribute("ltype");
+            XmlAttribute etype = xmlDocument.CreateAttribute("etype");
+
+            name.Value = this.Name;
+            ltype.Value = Enums.LengthType.Fixed.ToString();
+            etype.Value = Enums.ElementsType.Fixed.ToString();
+
+            node.Attributes.Append(name);
+            node.Attributes.Append(ltype);
+            node.Attributes.Append(etype);
+
+            return node;
         }
 
         #endregion

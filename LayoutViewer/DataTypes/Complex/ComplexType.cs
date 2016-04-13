@@ -14,7 +14,8 @@ namespace LayoutViewer.DataTypes.Complex
 
         private byte[] _buffer;
         private readonly List<IDataType> _dataTypes = new List<IDataType>();
-        private LengthType _lengthType;
+        private Enums.LengthType _lengthType;
+        private Enums.ElementsType _elementsType;
         private XmlNode _xmlNode;
 
         #endregion
@@ -29,21 +30,34 @@ namespace LayoutViewer.DataTypes.Complex
 
         #endregion
 
-        #region Inner Types
-
-        enum LengthType
-        {
-            Fixed = 0x01,
-            Dynamic = 0x02
-        };
-
-        #endregion
-
         #region Public Methods
 
         public void Parse()
         {
             
+        }
+
+        public XmlElement SerializeType(XmlDocument xmlDoc)
+        {
+            XmlElement node = xmlDoc.CreateElement("Complex");
+            XmlAttribute name = xmlDoc.CreateAttribute("name");
+            XmlAttribute ltype = xmlDoc.CreateAttribute("ltype");
+            XmlAttribute etype = xmlDoc.CreateAttribute("etype");
+
+            name.Value = this.Name;
+            ltype.Value = this._lengthType.ToString();
+            etype.Value = this._elementsType.ToString();
+
+            node.Attributes.Append(name);
+            node.Attributes.Append(ltype);
+            node.Attributes.Append(etype);
+
+            foreach (IDataType dataType in this._dataTypes)
+            {
+                node.AppendChild(dataType.SerializeType(xmlDoc));
+            }
+
+            return node;
         }
 
         #endregion
@@ -80,7 +94,12 @@ namespace LayoutViewer.DataTypes.Complex
 
         public void Read(Stream stream)
         {
-            throw new NotImplementedException();
+            if (this._lengthType == Enums.LengthType.Fixed)
+                stream.Read(this.Buffer, 0, this.Length);
+            else
+            {
+                throw new NotImplementedException("Dynamic length buffer read is not implemented yet");
+            }
         }
 
         public void Set(byte[] buff)
@@ -103,6 +122,8 @@ namespace LayoutViewer.DataTypes.Complex
                 throw new ArgumentException("Invalid Xml Node type");
 
             this.Name = _xmlNode.Attributes?["name"]?.Value;
+            Enums.LengthType.TryParse(_xmlNode.Attributes?["ltype"]?.Value ?? "Fixed", true, out this._lengthType);
+            Enums.ElementsType.TryParse(_xmlNode.Attributes?["etype"]?.Value ?? "Fixed", true, out this._elementsType);
         }
 
         #endregion
